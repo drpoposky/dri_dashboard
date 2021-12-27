@@ -9,8 +9,8 @@ import plotly.express as px
 server = app.server
 
 def replace_region_name(region_name):
-    region_name = region_name.replace("Valle d'Aosta/VallÃ©e d'Aoste","Valle d'Aosta")
-    region_name = region_name.replace("Trentino-Alto Adige/SÃ¼dtirol", "Trentino Alto Adige")
+    region_name = region_name.replace("Valle d'Aosta/Vallée d'Aoste","Valle d'Aosta")
+    region_name = region_name.replace("Trentino-Alto Adige/Südtirol", "Trentino Alto Adige")
     return region_name
 
 italy_regions = json.load(open("limits_IT_regions.geojson", "r"))
