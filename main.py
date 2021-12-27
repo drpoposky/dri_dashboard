@@ -3,6 +3,7 @@ import pandas as pd
 from dash import Dash, dcc, Input, Output,no_update, html  # pip install dash (version 2.0.0 or higher)
 import json
 # import numpy as np
+import dash_bootstrap_components as dbc
 from app import app
 from apps.utils.general_layout import Header, StyleNaDashApp
 import plotly.express as px
@@ -68,12 +69,35 @@ sidebar = StyleNaDashApp('index').sidebar
 
 header = Header('Drag Race Italia - Analysis', '', 'favicon.png').header
 
-content = html.Div([
+card_list = []
+for key, value in {'Puntate':6, 'Concorrenti':8, 'Età media':33.6}.items():
+    card_list.append(
+        dbc.Card(
+            [
+                dbc.CardBody(
+                    [
+                        html.H4(key.capitalize().replace('-', ' '), className="card-title"),
+                        html.P(
+                            id="number-" + key,
+                            children=value,
+                            className="card-value",
+                        ),
+
+                    ]
+                ),
+            ]
+        )
+    )
+row = html.Div(
+    [
+        dcc.Loading(children=[dbc.CardDeck(card_list)], color="#119DFF", type="dot",
+                    fullscreen=False)
+    ], style={'padding': '25px'}
+)
+
+content = html.Div( [row,
+
     # html.H1('Network Analysis dashboards lab'),
-    html.Br(),
-    html.Div([
-        dcc.Markdown(children=md_presentation_text)
-    ]),
     html.H1('Drag Queen spatial distribution'),
     dcc.Graph(id='my_bee_map', figure=fig_italy,clear_on_unhover=True,style={'width': '90vh', 'height': '90vh'},
               config={'displayModeBar': False},
