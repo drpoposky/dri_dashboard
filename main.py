@@ -99,7 +99,7 @@ content = html.Div( [row,
 
     # html.H1('Network Analysis dashboards lab'),
     html.H1('Drag Queen spatial distribution'),
-    dcc.Graph(id='my_bee_map', figure=fig_italy,clear_on_unhover=True,style={'width': '90vh', 'height': '90vh'},
+    dcc.Graph(id='my_bee_map', figure=fig_italy,clear_on_unhover=True,style={'width': '80vh', 'height': '80vh'},
               config={'displayModeBar': False},
 ),
 dcc.Tooltip(id="graph-tooltip-5", direction='bottom'),
