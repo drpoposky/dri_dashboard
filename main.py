@@ -1,13 +1,9 @@
-import math
-
 import pandas as pd
-import plotly.express as px  # (version 4.7.0 or higher)
 # import plotly.graph_objects as go
 from dash import Dash, dcc, Input, Output,no_update, html  # pip install dash (version 2.0.0 or higher)
 import json
 # import numpy as np
 from app import app
-import dash_bootstrap_components as dbc
 from apps.utils.general_layout import Header, StyleNaDashApp
 import plotly.express as px
 server = app.server
